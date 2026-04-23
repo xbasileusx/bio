@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lia Vasilevska — Product & Project Management</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0b;
+    --bg-2: #111114;
+    --bg-3: #18181d;
+    --bg-card: #141418;
+    --border: rgba(255,255,255,0.07);
+    --border-hover: rgba(255,255,255,0.14);
+    --accent: #7c6fff;
+    --accent-2: #a89cff;
+    --accent-dim: rgba(124,111,255,0.12);
+    --text-1: #f0eeff;
+    --text-2: #a09db8;
+    --text-3: #635f7a;
+    --teal: #3ecfaa;
+    --teal-dim: rgba(62,207,170,0.1);
+    --amber: #f0a857;
+    --amber-dim: rgba(240,168,87,0.1);
+    --pink: #e87aab;
+    --pink-dim: rgba(232,122,171,0.1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text-1);
+    font-family: 'Sora', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(10,10,11,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--accent-2);
+    letter-spacing: 0.06em;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 13px; font-weight: 400;
+    color: var(--text-2); text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text-1); }
+
+  /* SECTIONS */
+  section { padding: 7rem 4rem; max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::after {
+    content: ''; display: block;
+    height: 1px; width: 40px;
+    background: var(--accent);
+    opacity: 0.4;
+  }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding-top: 8rem; padding-bottom: 4rem;
+    position: relative; overflow: hidden;
+  }
+  .hero-grid {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image:
+      linear-gradient(rgba(124,111,255,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(124,111,255,0.035) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 100%);
+  }
+  .hero-top {
+    display: flex; align-items: flex-start; gap: 3.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .hero-avatar {
+    width: 110px; height: 110px; border-radius: 50%;
+    border: 2px solid rgba(124,111,255,0.35);
+    object-fit: cover; flex-shrink: 0;
+    margin-top: 0.5rem;
+  }
+  .hero-text { flex: 1; }
+  .hero-kicker {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px; letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .hero-kicker span {
+    display: inline-block; width: 6px; height: 6px;
+    border-radius: 50%; background: var(--teal);
+    box-shadow: 0 0 8px var(--teal);
+  }
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3rem, 5.5vw, 5rem);
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    color: var(--text-1);
+    margin-bottom: 1.2rem;
+  }
+  h1 em { font-style: italic; color: var(--accent-2); }
+  .hero-sub {
+    font-size: 1rem; font-weight: 300;
+    color: var(--text-2); max-width: 580px;
+    line-height: 1.75; margin-bottom: 2rem;
+  }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 0.72rem 1.5rem;
+    font-size: 13px; font-weight: 500; letter-spacing: 0.04em;
+    text-decoration: none; border-radius: 6px;
+    transition: all 0.2s; cursor: pointer; font-family: 'Sora', sans-serif;
+  }
+  .btn-primary {
+    background: var(--accent); color: #fff;
+    border: 1px solid var(--accent);
+  }
+  .btn-primary:hover { background: var(--accent-2); border-color: var(--accent-2); }
+  .btn-ghost {
+    background: transparent; color: var(--text-2);
+    border: 1px solid var(--border-hover);
+  }
+  .btn-ghost:hover { color: var(--text-1); border-color: rgba(255,255,255,0.25); }
+  .hero-stats {
+    display: flex; gap: 3rem; margin-top: 3.5rem;
+  }
+  .stat-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 1.7rem; font-weight: 500; color: var(--text-1);
+  }
+  .stat-num span { color: var(--accent); }
+  .stat-label { font-size: 12px; color: var(--text-3); margin-top: 2px; }
+
+  /* ABOUT */
+  #about { padding-top: 5rem; }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem; align-items: start;
+  }
+  .about-text h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.3rem; line-height: 1.2; margin-bottom: 1.5rem;
+  }
+  .about-text p { color: var(--text-2); margin-bottom: 1.2rem; font-size: 0.96rem; }
+  .detail-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem; margin-bottom: 1rem;
+  }
+  .detail-card h4 {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--teal);
+    margin-bottom: 0.8rem;
+  }
+  .detail-list { list-style: none; }
+  .detail-list li {
+    font-size: 13px; color: var(--text-2);
+    padding: 0.35rem 0;
+    border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .detail-list li:last-child { border-bottom: none; }
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 0.1em;
+    color: var(--accent); background: var(--accent-dim);
+    padding: 2px 8px; border-radius: 4px;
+  }
+  .tag-teal { color: var(--teal); background: var(--teal-dim); }
+  .tag-amber { color: var(--amber); background: var(--amber-dim); }
+
+  /* EXPERIENCE */
+  #experience { }
+  .exp-items { margin-top: 2rem; }
+  .exp-item {
+    display: grid; grid-template-columns: 150px 1fr;
+    gap: 2.5rem;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .exp-item:last-child { border-bottom: none; }
+  .exp-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; color: var(--text-3);
+    letter-spacing: 0.06em; padding-top: 4px;
+  }
+  .exp-role { font-size: 1.02rem; font-weight: 500; color: var(--text-1); margin-bottom: 3px; }
+  .exp-company {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px; color: var(--accent-2); margin-bottom: 0.8rem;
+    letter-spacing: 0.04em;
+  }
+  .exp-bullets { list-style: none; margin-bottom: 1rem; }
+  .exp-bullets li {
+    font-size: 0.9rem; color: var(--text-2); line-height: 1.65;
+    padding: 0.2rem 0 0.2rem 1rem;
+    position: relative;
+  }
+  .exp-bullets li::before {
+    content: '—'; position: absolute; left: 0;
+    color: var(--accent); font-size: 10px; top: 6px;
+  }
+  .exp-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .exp-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 0.08em;
+    padding: 3px 10px; border-radius: 4px;
+    border: 1px solid var(--border-hover);
+    color: var(--text-3);
+  }
+
+  /* SKILLS */
+  #skills { }
+  .skills-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 2rem;
+  }
+  .skill-group { background: var(--bg-card); padding: 1.8rem; }
+  .skill-group-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: 0.14em;
+    text-transform: uppercase; margin-bottom: 1.2rem;
+  }
+  .skill-group-title.purple { color: var(--accent); }
+  .skill-group-title.teal { color: var(--teal); }
+  .skill-group-title.amber { color: var(--amber); }
+  .skill-group-title.pink { color: var(--pink); }
+  .skill-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-chip {
+    font-size: 12px; color: var(--text-2);
+    padding: 5px 12px;
+    border: 1px solid var(--border);
+    border-radius: 20px; transition: all 0.18s;
+  }
+  .skill-chip:hover { border-color: var(--border-hover); color: var(--text-1); }
+
+  /* EDUCATION */
+  #education { }
+  .edu-items { margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+  .edu-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem 1.8rem;
+    display: flex; align-items: flex-start; gap: 1.5rem;
+  }
+  .edu-icon {
+    width: 42px; height: 42px; border-radius: 8px;
+    background: var(--accent-dim);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-size: 18px;
+  }
+  .edu-degree { font-weight: 500; font-size: 0.97rem; margin-bottom: 2px; }
+  .edu-school { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent-2); margin-bottom: 4px; }
+  .edu-year { font-size: 12px; color: var(--text-3); }
+
+  /* CONTACT */
+  #contact { text-align: center; }
+  #contact h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 3rem; line-height: 1.15; margin-bottom: 1rem;
+  }
+  #contact p { color: var(--text-2); margin-bottom: 2.5rem; max-width: 460px; margin-left: auto; margin-right: auto; }
+  .contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+  .contact-link {
+    display: flex; align-items: center; gap: 8px;
+    padding: 0.75rem 1.4rem;
+    border: 1px solid var(--border-hover);
+    border-radius: 6px; text-decoration: none;
+    font-size: 13px; color: var(--text-2);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.04em; transition: all 0.2s;
+  }
+  .contact-link:hover { border-color: var(--accent); color: var(--accent-2); }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 4rem;
+    display: flex; justify-content: space-between; align-items: center;
+    max-width: 1100px; margin: 0 auto;
+  }
+  footer span { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-3); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up { animation: fadeUp 0.6s ease both; }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.22s; }
+  .delay-3 { animation-delay: 0.36s; }
+  .delay-4 { animation-delay: 0.5s; }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 5rem 1.5rem; }
+    h1 { font-size: 2.5rem; }
+    .hero-top { flex-direction: column; gap: 1.5rem; }
+    .hero-avatar { width: 80px; height: 80px; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.4rem; }
+    .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#hero">LV_</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero" style="max-width:1100px;">
+  <div class="hero-grid"></div>
+  <div class="hero-top fade-up">
+    <img
+      src="https://ui-avatars.com/api/?name=Lia+Vasilevska&background=7c6fff&color=fff&size=200&bold=true"
+      alt="Lia Vasilevska"
+      class="hero-avatar"
+    />
+    <div class="hero-text">
+      <div class="hero-kicker"><span></span> Open to new opportunities · Sofia, BG</div>
+      <h1>Lia <em>Vasilevska</em></h1>
+      <p class="hero-sub">
+        Motivated and detail-oriented Product &amp; Technical Project Lead with a diverse background. Extensive experience in leading end-to-end product development, requirement gathering, stakeholder management and documentation.
+      </p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">Get in touch</a>
+        <a href="#experience" class="btn btn-ghost">View my work</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-stats fade-up delay-2">
+    <div class="stat-item">
+      <div class="stat-num">5<span>+</span></div>
+      <div class="stat-label">Years of experience</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">6</div>
+      <div class="stat-label">Companies worked at</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Industries covered</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Languages spoken</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About</div>
+  <div class="about-grid">
+    <div class="about-text">
+      <h2>Where business strategy meets technical depth.</h2>
+      <p>
+        I operate at the intersection of product vision and technical execution — fluent in Agile methodologies, backlog management, stakeholder communication, and hands-on tooling like SQL, Python and Figma.
+      </p>
+      <p>
+        Across fintech, e-commerce, pharma, and SaaS, I've owned the full product lifecycle: from discovery and requirements gathering through to MVP delivery, testing, release, and ongoing maintenance.
+      </p>
+      <p>
+        Strong at bridging business and technical teams — translating complex requirements into actionable specs, BPMN diagrams, and structured documentation that keep everyone aligned.
+      </p>
+      <a href="#contact" class="btn btn-ghost" style="margin-top:1rem; display:inline-flex;">Let's connect →</a>
+    </div>
+    <div class="about-aside">
+      <div class="detail-card">
+        <h4>Quick facts</h4>
+        <ul class="detail-list">
+          <li>Location <span class="tag">Sofia, BG</span></li>
+          <li>Focus <span class="tag">Product &amp; PM</span></li>
+          <li>Status <span class="tag tag-teal">Open</span></li>
+          <li>Phone <span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text-3)">+359 89 8233907</span></li>
+        </ul>
+      </div>
+      <div class="detail-card">
+        <h4>Languages</h4>
+        <ul class="detail-list">
+          <li>Bulgarian <span class="tag tag-teal">C2</span></li>
+          <li>English <span class="tag tag-teal">C2</span></li>
+          <li>Korean <span class="tag tag-amber">B1</span></li>
+          <li>Russian <span class="tag tag-amber">B1</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Experience</div>
+  <div class="exp-items">
+
+    <div class="exp-item">
+      <div class="exp-date">2025</div>
+      <div>
+        <div class="exp-role">Product &amp; Technical Project Lead</div>
+        <div class="exp-company">Cocosolis</div>
+        <ul class="exp-bullets">
+          <li>Led vendor development team, aligned roadmaps and timelines, managed project budgets and implemented a hybrid Scrum framework to improve delivery efficiency.</li>
+          <li>Optimized e-commerce performance through A/B testing, data analysis, and customer feedback. Defined business and technical requirements and delivered continuous product improvements.</li>
+          <li>Managed vendor selection by participating in RFP processes, evaluating proposals, and supporting contract decisions.</li>
+          <li>Developed reporting and automation solutions using MySQL, Python and Klaviyo.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag">Scrum</span>
+          <span class="exp-tag">A/B Testing</span>
+          <span class="exp-tag">MySQL</span>
+          <span class="exp-tag">Python</span>
+          <span class="exp-tag">Klaviyo</span>
+          <span class="exp-tag">RFP</span>
+          <span class="exp-tag">E-commerce</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">2025</div>
+      <div>
+        <div class="exp-role">Business Data Analyst</div>
+        <div class="exp-company">Indeavr</div>
+        <ul class="exp-bullets">
+          <li>Supporting pharma and FMCG projects with requirement gathering, Jira story creation and documentation.</li>
+          <li>Assisting in project lifecycle activities including coordination and stakeholder communication.</li>
+          <li>Contributing to Power BI report development and providing input on data lake and data warehouse management.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag">Power BI</span>
+          <span class="exp-tag">Jira</span>
+          <span class="exp-tag">Pharma</span>
+          <span class="exp-tag">FMCG</span>
+          <span class="exp-tag">Data Warehouse</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">2024 – 2025</div>
+      <div>
+        <div class="exp-role">Business Analyst <span style="font-weight:300;color:var(--text-3);font-size:0.88rem;">· with emphasis on Product Management</span></div>
+        <div class="exp-company">Cleverpine</div>
+        <ul class="exp-bullets">
+          <li>Led the finalization, testing, and maintenance of a legacy product while launching two more end-to-end under tight deadlines.</li>
+          <li>Managed backlogs, conducted Scrum-based processes, and created extensive product documentation including SRS documents, BPMN diagrams, mindmaps and Confluence structures.</li>
+          <li>Facilitated workshops, developed roadmaps, and maintained structured communication with stakeholders.</li>
+          <li>Supported all development cycles: discovery, kickoff, MVP execution, testing, release, maintenance and change requests.</li>
+          <li>Bridged business and technical teams by translating requirements into actionable insights and technical specifications.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag">Scrum</span>
+          <span class="exp-tag">SRS Docs</span>
+          <span class="exp-tag">BPMN</span>
+          <span class="exp-tag">Confluence</span>
+          <span class="exp-tag">Roadmapping</span>
+          <span class="exp-tag">Backlog Mgmt</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">2023 – 2024</div>
+      <div>
+        <div class="exp-role">Business Analyst</div>
+        <div class="exp-company">First Investment Bank</div>
+        <ul class="exp-bullets">
+          <li>Managed multiple internal and external projects including mobile and web banking, API integrations and compliance changes.</li>
+          <li>Conducted in-depth research, requirements gathering and project mapping.</li>
+          <li>Collaborated with cross-functional teams across business and technology departments.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag">Fintech</span>
+          <span class="exp-tag">Banking</span>
+          <span class="exp-tag">API Integrations</span>
+          <span class="exp-tag">Compliance</span>
+          <span class="exp-tag">Requirements</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">2022 – 2023</div>
+      <div>
+        <div class="exp-role">Account Project Manager</div>
+        <div class="exp-company">Hyperzon</div>
+        <ul class="exp-bullets">
+          <li>Managed Amazon brand accounts, creating roadmaps, PPC campaigns and marketing timelines.</li>
+          <li>Resolved logistical challenges and collaborated with VAs, copywriters, designers and developers to achieve KPIs.</li>
+          <li>Built and managed a team for lead generation, overseeing recruitment, onboarding, training and quality assurance.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag">Amazon</span>
+          <span class="exp-tag">PPC</span>
+          <span class="exp-tag">Team Building</span>
+          <span class="exp-tag">KPIs</span>
+          <span class="exp-tag">Roadmapping</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">2020 – 2022</div>
+      <div>
+        <div class="exp-role">Content Moderator &amp; Point of Contact</div>
+        <div class="exp-company">Alorica</div>
+        <ul class="exp-bullets">
+          <li>Acted as liaison between the QA and Moderation teams, enhancing team performance through innovative tactics.</li>
+          <li>Developed strong communication and time management skills while maintaining accuracy under tight deadlines.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag">QA</span>
+          <span class="exp-tag">Team Liaison</span>
+          <span class="exp-tag">Communication</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Skills &amp; Expertise</div>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-title purple">Product &amp; Strategy</div>
+      <div class="skill-chips">
+        <span class="skill-chip">Roadmapping</span>
+        <span class="skill-chip">Backlog Mgmt</span>
+        <span class="skill-chip">Requirements Gathering</span>
+        <span class="skill-chip">SRS Documentation</span>
+        <span class="skill-chip">BPMN Diagrams</span>
+        <span class="skill-chip">A/B Testing</span>
+        <span class="skill-chip">MVP Delivery</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title teal">Project &amp; Delivery</div>
+      <div class="skill-chips">
+        <span class="skill-chip">Agile / Scrum</span>
+        <span class="skill-chip">Hybrid Scrum</span>
+        <span class="skill-chip">Jira</span>
+        <span class="skill-chip">Confluence</span>
+        <span class="skill-chip">Stakeholder Comms</span>
+        <span class="skill-chip">Workshop Facilitation</span>
+        <span class="skill-chip">Atlassian Suite</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title amber">Technical</div>
+      <div class="skill-chips">
+        <span class="skill-chip">SQL / MySQL</span>
+        <span class="skill-chip">Python</span>
+        <span class="skill-chip">HTML &amp; CSS</span>
+        <span class="skill-chip">Figma</span>
+        <span class="skill-chip">UI / UX Principles</span>
+        <span class="skill-chip">Power BI</span>
+        <span class="skill-chip">Klaviyo</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-label">Education &amp; Certifications</div>
+  <div class="edu-items">
+    <div class="edu-card">
+      <div class="edu-icon">🎓</div>
+      <div>
+        <div class="edu-degree">BA in International Business <span style="font-weight:300;color:var(--text-3);font-size:0.88rem;">· with emphasis on Product Management</span></div>
+        <div class="edu-school">International Business School</div>
+        <div class="edu-year">2020 – 2024</div>
+      </div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-icon">📋</div>
+      <div>
+        <div class="edu-degree">PSPO Certification (Professional Scrum Product Owner)</div>
+        <div class="edu-school">Scrum.org</div>
+        <div class="edu-year">2024</div>
+      </div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-icon">⚡</div>
+      <div>
+        <div class="edu-degree">Agile Essentials with Scrum Certification</div>
+        <div class="edu-school">Software University</div>
+        <div class="edu-year">2023</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label" style="justify-content:center; margin-bottom:1.5rem;">Contact</div>
+  <h2>Let's work together.</h2>
+  <p>Open to product and project leadership roles, business analysis engagements, and interesting conversations.</p>
+  <div class="contact-links">
+    <a href="mailto:lia.vladi.vasilevska@gmail.com" class="contact-link">✉ lia.vladi.vasilevska@gmail.com</a>
+    <a href="tel:+359898233907" class="contact-link">✆ +359 89 8233907</a>
+    <a href="https://linkedin.com" target="_blank" class="contact-link">in LinkedIn</a>
+  </div>
+</section>
+
+<footer>
+  <span>© 2025 Lia Vasilevska</span>
+  <span>Product &amp; Project Management · Sofia, BG</span>
+</footer>
+
+</body>
+</html>
